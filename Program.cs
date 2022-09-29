@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using OopCoursework;
+using OopCoursework.Rules;
 
 var emptySymbol = '.';
 var plantSymbol = 'P';
@@ -17,7 +18,9 @@ var plants = new List<Creature>();
 var herbivores = new List<Creature>();
 var carnivores = new List<Creature>();
 
-var rules = new IRule[] {};
+var rules = new IRule[] {
+  new Spawner(plants, DelegatesFactory.UniqueCreatureInBordersGenerator(plants, printHeight, printWidth))
+};
 
 while (true) {
   Update(rules);
